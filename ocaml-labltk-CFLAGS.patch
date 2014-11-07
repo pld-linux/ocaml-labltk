@@ -1,0 +1,22 @@
+--- labltk-8.06.0/browser/Makefile.nt.orig	2014-09-18 06:08:33.000000000 +0200
++++ labltk-8.06.0/browser/Makefile.nt	2014-11-07 22:53:11.594338173 +0100
+@@ -14,7 +14,7 @@
+ 
+ # $Id$
+ 
+-CCFLAGS=-I$(LIBDIR)/caml $(TK_DEFS)
++override CCFLAGS += -I$(LIBDIR)/caml $(TK_DEFS)
+ 
+ include ../support/Makefile.common
+ 
+--- labltk-8.06.0/support/Makefile.orig	2014-09-18 06:08:33.000000000 +0200
++++ labltk-8.06.0/support/Makefile	2014-11-07 22:59:52.700988006 +0100
+@@ -28,7 +28,7 @@ COBJS=cltkCaml.$(O) cltkUtf.$(O) cltkEva
+       cltkFile.$(O) cltkMain.$(O) cltkMisc.$(O) cltkTimer.$(O) \
+       cltkVar.$(O) cltkWait.$(O) cltkImg.$(O)
+ 
+-CCFLAGS=-I$(LIBDIR)/caml $(TK_DEFS) $(SHAREDCCCOMPOPTS)
++override CCFLAGS += -I$(LIBDIR)/caml $(TK_DEFS) $(SHAREDCCCOMPOPTS)
+ 
+ COMPFLAGS=
+ THFLAGS=-I +threads -I vmthreads
