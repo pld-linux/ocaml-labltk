@@ -37,6 +37,7 @@ Summary(pl.UTF-8):	Biblioteka LablTk dla OCamla
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 %requires_eq	ocaml
+Conflicts:	ocaml-findlib < 1.5.5
 
 %description devel
 LablTk gives OCaml program access to Tcl/Tk GUI widgets. This package
