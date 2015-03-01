@@ -3,7 +3,7 @@
 %bcond_without	opt		# build opt
 
 %ifarch x32
-%undefine	opt
+%undefine	with_opt
 %endif
 
 %define		module	labltk
