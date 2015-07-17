@@ -1,9 +1,9 @@
 #
 # Conditional build:
-%bcond_without	opt		# build opt
+%bcond_without	ocaml_opt	# build opt
 
 %ifarch x32
-%undefine	with_opt
+%undefine	with_ocaml_opt
 %endif
 
 %define		module	labltk
@@ -11,7 +11,7 @@ Summary:	Runtime for LablTk library
 Summary(pl.UTF-8):	Środowisko uruchomieniowe dla biblioteki LablTk
 Name:		ocaml-labltk
 Version:	8.06.0
-Release:	2
+Release:	3
 Epoch:		1
 License:	LGPL v2 with linking exception
 Group:		Libraries
@@ -71,7 +71,7 @@ Przykładowe kody źródłowe w OCamlu dla LablTk.
 %build
 ./configure
 
-%{__make} -j1 all %{?with_opt:allopt} \
+%{__make} -j1 all %{?with_ocaml_opt:allopt} \
 	CCFLAGS="%{rpmcflags} -Wall"
 
 %install
@@ -111,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/labltk/*.cmi
 %{_libdir}/ocaml/labltk/*.cmo
 %{_libdir}/ocaml/labltk/liblabltk.a
-%if %{with opt}
+%if %{with ocaml_opt}
 %{_libdir}/ocaml/labltk/*.cmx
 %{_libdir}/ocaml/labltk/frxlib.a
 %{_libdir}/ocaml/labltk/frxlib.cmxa
