@@ -11,7 +11,7 @@ Summary:	Runtime for LablTk library
 Summary(pl.UTF-8):	Środowisko uruchomieniowe dla biblioteki LablTk
 Name:		ocaml-labltk
 Version:	8.06.0
-Release:	4
+Release:	5
 Epoch:		1
 License:	LGPL v2 with linking exception
 Group:		Libraries
