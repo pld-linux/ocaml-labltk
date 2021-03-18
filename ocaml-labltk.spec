@@ -10,15 +10,15 @@
 Summary:	Runtime for LablTk library
 Summary(pl.UTF-8):	Środowisko uruchomieniowe dla biblioteki LablTk
 Name:		ocaml-labltk
-Version:	8.06.2
+Version:	8.06.10
 Release:	1
 Epoch:		1
 License:	LGPL v2 with linking exception
 Group:		Libraries
-Source0:	https://forge.ocamlcore.org/frs/download.php/1628/labltk-%{version}.tar.gz
-# Source0-md5:	15020ef74baa688536ce1d38525462f8
+Source0:	https://github.com/garrigue/labltk/archive/%{version}/labltk-%{version}.tar.gz
+# Source0-md5:	d6b4691bb03b114d45411158143883d7
 Patch0:		%{name}-CFLAGS.patch
-URL:		https://forge.ocamlcore.org/projects/labltk/
+URL:		https://github.com/garrigue/labltk
 BuildRequires:	ocaml >= 1:4.02
 BuildRequires:	tk-devel >= 8.2
 %requires_eq	ocaml-runtime
@@ -71,7 +71,7 @@ Przykładowe kody źródłowe w OCamlu dla LablTk.
 %build
 ./configure
 
-%{__make} -j1 all %{?with_ocaml_opt:allopt} \
+%{__make} -j1 all %{?with_ocaml_opt:opt} \
 	CCFLAGS="%{rpmcflags} -Wall"
 
 %install
@@ -81,6 +81,7 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/ocaml/stublibs,%{_examplesdir}/%{name}-%{v
 %{__make} install \
 	BINDIR=$RPM_BUILD_ROOT%{_bindir} \
 	LIBDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml \
+	STUBLIBDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml/stublibs \
 	MANDIR=$RPM_BUILD_ROOT%{_mandir}
 
 cp -r examples* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
