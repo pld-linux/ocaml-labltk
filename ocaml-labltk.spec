@@ -11,7 +11,7 @@ Summary:	Runtime for LablTk library
 Summary(pl.UTF-8):	Środowisko uruchomieniowe dla biblioteki LablTk
 Name:		ocaml-labltk
 Version:	8.06.10
-Release:	1
+Release:	2
 Epoch:		1
 License:	LGPL v2 with linking exception
 Group:		Libraries
@@ -88,11 +88,7 @@ cp -r examples* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/ocaml/labltk/{labltktop,pp}
 
-install -d $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/labltk
-cp support/META $RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/labltk
-cat >>$RPM_BUILD_ROOT%{_libdir}/ocaml/site-lib/labltk/META <<EOF 
-directory="+labltk"
-EOF
+cp -p support/META $RPM_BUILD_ROOT%{_libdir}/ocaml/labltk
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -107,6 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/labltk
 %attr(755,root,root) %{_bindir}/ocamlbrowser
 %dir %{_libdir}/ocaml/labltk
+%{_libdir}/ocaml/labltk/META
 %{_libdir}/ocaml/labltk/*.mli
 %{_libdir}/ocaml/labltk/*.cma
 %{_libdir}/ocaml/labltk/*.cmi
@@ -122,5 +119,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/ocaml/labltk/labltk.cmxa
 %endif
 %attr(755,root,root) %{_libdir}/ocaml/labltk/tkcompiler
-%{_libdir}/ocaml/site-lib/labltk
 %{_examplesdir}/%{name}-%{version}
