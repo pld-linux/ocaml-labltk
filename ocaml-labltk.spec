@@ -2,7 +2,7 @@
 # Conditional build:
 %bcond_without	ocaml_opt	# build opt
 
-%ifnarch %{ix86} %{x8664} arm aarch64 ppc sparc sparcv9 
+%ifnarch %{ix86} %{x8664} %{arm} aarch64 ppc sparc sparcv9
 %undefine	with_ocaml_opt
 %endif
 
@@ -15,6 +15,7 @@ Release:	2
 Epoch:		1
 License:	LGPL v2 with linking exception
 Group:		Libraries
+#Source0Download: https://github.com/garrigue/labltk/releases
 Source0:	https://github.com/garrigue/labltk/archive/%{version}/labltk-%{version}.tar.gz
 # Source0-md5:	d6b4691bb03b114d45411158143883d7
 Patch0:		%{name}-CFLAGS.patch
