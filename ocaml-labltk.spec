@@ -67,7 +67,7 @@ Przykładowe kody źródłowe w OCamlu dla LablTk.
 
 %prep
 %setup -q -n labltk-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 ./configure
