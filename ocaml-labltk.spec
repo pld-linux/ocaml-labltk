@@ -10,17 +10,17 @@
 Summary:	Runtime for LablTk library
 Summary(pl.UTF-8):	Środowisko uruchomieniowe dla biblioteki LablTk
 Name:		ocaml-labltk
-Version:	8.06.10
-Release:	3
+Version:	8.06.12
+Release:	1
 Epoch:		1
 License:	LGPL v2 with linking exception
 Group:		Libraries
 #Source0Download: https://github.com/garrigue/labltk/releases
 Source0:	https://github.com/garrigue/labltk/archive/%{version}/labltk-%{version}.tar.gz
-# Source0-md5:	d6b4691bb03b114d45411158143883d7
+# Source0-md5:	871e823b78ae07f5fe2423bbecb83558
 Patch0:		%{name}-CFLAGS.patch
 URL:		https://github.com/garrigue/labltk
-BuildRequires:	ocaml >= 1:4.02
+BuildRequires:	ocaml >= 1:4.14
 BuildRequires:	tk-devel >= 8.2
 %requires_eq	ocaml-runtime
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -79,7 +79,8 @@ Przykładowe kody źródłowe w OCamlu dla LablTk.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_libdir}/ocaml/stublibs,%{_examplesdir}/%{name}-%{version}}
 
-%{__make} install \
+%{__make} -j1 install \
+	RANLIB=ranlib \
 	BINDIR=$RPM_BUILD_ROOT%{_bindir} \
 	LIBDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml \
 	STUBLIBDIR=$RPM_BUILD_ROOT%{_libdir}/ocaml/stublibs \
